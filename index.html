@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShieldTech - Advanced Cybersecurity Solutions</title>
+    <meta name="description" content="ShieldTech provides comprehensive cybersecurity solutions to protect your business from digital threats. Our services include network security, threat prevention, and security training.">
+    <style>
+        /* Global Styles */
+        :root {
+            --primary: #0a192f;
+            --primary-light: #172a45;
+            --secondary: #64ffda;
+            --secondary-dark: #52e3c2;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --danger: #dc3545;
+            --warning: #ffc107;
+            --success: #28a745;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        h1, h2, h3, h4 {
+            font-weight: 700;
+            line-height: 1.3;
+            color: var(--primary);
+        }
+        
+        a {
+            color: var(--secondary);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        a:hover {
+            color: var(--secondary-dark);
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        /* Button Styles */
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+        }
+        
+        .btn-primary {
+            background-color: var(--secondary);
+            color: var(--primary);
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--secondary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(100, 255, 218, 0.2);
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--secondary);
+        }
+        
+        .logo img {
+            width: 40px;
+            height: 40px;
+            margin-right: 0.75rem;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            font-weight: 500;
+            padding: 0.5rem 0;
+            position: relative;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(10, 25, 47, 0.9), rgba(10, 25, 47, 0.9)), 
+                        url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            padding: 6rem 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        /* Section Styles */
+        .section {
+            padding: 5rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title h2 {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: var(--secondary);
+            border-radius: 2px;
+        }
+        
+        .section-title p {
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            font-size: 1.1rem;
+            color: var(--gray);
+        }
+        
+        /* Card Grid */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .card {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            border-top: 4px solid var(--secondary);
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        .card i {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+        }
+        
+        .card h3 {
+            margin-bottom: 1rem;
+        }
+        
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .about-img {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+        }
+        
+        .about-img img {
+            width: 100%;
+            height: auto;
+            transition: transform 0.5s ease;
+        }
+        
+        .about-img:hover img {
+            transform: scale(1.03);
+        }
+        
+        /* Threat Types Section */
+        .threat-card {
+            height: 100%;
+        }
+        
+        .threat-card h3 {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        /* Contact Form */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px rgba(100, 255, 218, 0.2);
+        }
+        
+        .form-group textarea {
+            min-height: 150px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--primary);
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-column h3 {
+            color: var(--secondary);
+            font-size: 1.25rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column li {
+            margin-bottom: 0.75rem;
+        }
+        
+        .footer-column a {
+            color: rgba(255, 255, 255, 0.8);
+            transition: var(--transition);
+        }
+        
+        .footer-column a:hover {
+            color: var(--secondary);
+            text-decoration: none;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.25rem;
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            color: var(--secondary);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-img {
+                order: -1;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .section {
+                padding: 3rem 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: var(--primary-light);
+                flex-direction: column;
+                align-items: center;
+                padding: 1rem 0;
+                gap: 1rem;
+                clip-path: circle(0px at 90% -10%);
+                transition: clip-path 0.5s ease;
+                pointer-events: none;
+            }
+            
+            .nav-links.active {
+                clip-path: circle(1000px at 90% -10%);
+                pointer-events: all;
+            }
+            
+            .nav-links li {
+                margin: 0;
+            }
+            
+            .hero {
+                padding: 4rem 0;
+                background-attachment: scroll;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .container {
+                width: 95%;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 250px;
+            }
+        }
+
+
+
+
+
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+<div class="logo">
+    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="20" cy="20" r="18" fill="#0A192F" stroke="#64FFDA" stroke-width="2"/>
+        <path d="M20 8L26 12V18L20 22L14 18V12L20 8Z" fill="#64FFDA"/>
+        <path d="M20 22L26 18V24L20 28L14 24V18L20 22Z" fill="#64FFDA"/>
+        <path d="M20 22L14 18L20 14L26 18L20 22Z" fill="#52E3C2"/>
+    </svg>
+    <span>ShieldTech</span>
+</div>
+                <button class="mobile-menu-btn" aria-label="Toggle navigation">
+                    <i class="fas fa-bars"></i>
+                </button>
+                
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Cyber Security</a></li>
+                    <li><a href="#threats">Cyber Threats</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1 style="color: white;">Cybersecurity</h1>
+            <p>Cybersecurity is the practice of protecting systems, networks, and data from digital attacks, unauthorized access, or damage. It involves a combination of technologies, processes, and practices designed to safeguard sensitive information and ensure the integrity, confidentiality, and availability of data.</p>
+            <div class="hero-buttons">
+                <a href="#services" class="btn btn-primary">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Key Aspects of Cybersecurity</h2>
+                <p>Comprehensive protection tailored to your business needs</p>
+            </div>
+            
+            <div class="card-grid">
+                <div class="card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Network Security</h3>
+                    <p>Protect your network infrastructure from unauthorized access and cyber threats with our advanced security solutions.</p>
+                    <ul>
+                        <li>Firewall configuration</li>
+                        <li>Intrusion detection systems</li>
+                        <li>VPN solutions</li>
+                        <li>24/7 network monitoring</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <i class="fas fa-lock"></i>
+                    <h3>Data Encryption</h3>
+                    <p>Secure your sensitive data with industry-standard encryption technologies to prevent unauthorized access.</p>
+                    <ul>
+                        <li>End-to-end encryption</li>
+                        <li>Secure file transfer</li>
+                        <li>Database protection</li>
+                        <li>Compliance solutions</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <i class="fas fa-search"></i>
+                    <h3>Penetration Testing</h3>
+                    <p>Identify vulnerabilities before attackers do with our comprehensive ethical hacking services.</p>
+                    <ul>
+                        <li>Web application testing</li>
+                        <li>Network vulnerability scans</li>
+                        <li>Social engineering tests</li>
+                        <li>Detailed remediation reports</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <i class="fas fa-cloud"></i>
+                    <h3>Cloud Security</h3>
+                    <p>Secure your cloud infrastructure and SaaS applications with industry best practices.</p>
+                    <ul>
+                        <li>Cloud configuration audits</li>
+                        <li>Identity and access management</li>
+                        <li>Data loss prevention</li>
+                        <li>Compliance monitoring</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>Mobile Security</h3>
+                    <p>Protect your mobile workforce and applications from modern security threats.</p>
+                    <ul>
+                        <li>Mobile device management</li>
+                        <li>App security testing</li>
+                        <li>Secure communications</li>
+                        <li>BYOD security policies</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <i class="fas fa-user-graduate"></i>
+                    <h3>Security Training</h3>
+                    <p>Educate your team to recognize and prevent security breaches with our training programs.</p>
+                    <ul>
+                        <li>Phishing simulations</li>
+                        <li>Security awareness training</li>
+                        <li>Incident response drills</li>
+                        <li>Customized training programs</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1 style="color: white;">Cyber Threats</h1>
+            <p>Cyberthreats are malicious activities aimed at disrupting, damaging, or gaining unauthorized access to digital systems, networks, or data. They can originate from individuals, groups, or even nation-states, and they pose significant risks to businesses, governments, and individuals alike.</p>
+            <div class="hero-buttons">
+                <a href="#threats" class="btn btn-primary">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Cyber Threats Section -->
+    <section class="section" id="threats">
+        <div class="container">
+            <div class="section-title">
+                <h2>Modern Cyber Threats</h2>
+                <p>Understanding the evolving landscape of digital threats</p>
+            </div>
+            
+            <div class="card-grid">
+                <div class="card threat-card">
+                    <i class="fas fa-fish"></i>
+                    <h3>Phishing Attacks</h3>
+                    <p>Deceptive attempts to steal sensitive information by masquerading as trustworthy entities.</p>
+                    <ul>
+                        <li>Email phishing campaigns</li>
+                        <li>Spear phishing targeting individuals</li>
+                        <li>Social media scams</li>
+                        <li>SMS-based smishing</li>
+                    </ul>
+                </div>
+                
+                <div class="card threat-card">
+                    <i class="fas fa-virus"></i>
+                    <h3>Ransomware</h3>
+                    <p>Malicious software that encrypts files and demands payment for their release.</p>
+                    <ul>
+                        <li>Data encryption attacks</li>
+                        <li>Double extortion tactics</li>
+                        <li>Ransomware-as-a-service</li>
+                        <li>Supply chain targeting</li>
+                    </ul>
+                </div>
+                
+                <div class="card threat-card">
+                    <i class="fas fa-network-wired"></i>
+                    <h3>DDoS Attacks</h3>
+                    <p>Overwhelming systems with traffic to disrupt services and operations.</p>
+                    <ul>
+                        <li>Volume-based attacks</li>
+                        <li>Application layer attacks</li>
+                        <li>Amplification techniques</li>
+                        <li>Botnet-powered assaults</li>
+                    </ul>
+                </div>
+                
+                <div class="card threat-card">
+                    <i class="fas fa-user-secret"></i>
+                    <h3>Insider Threats</h3>
+                    <p>Security risks originating from within an organization.</p>
+                    <ul>
+                        <li>Malicious employee actions</li>
+                        <li>Accidental data exposure</li>
+                        <li>Compromised credentials</li>
+                        <li>Third-party risks</li>
+                    </ul>
+                </div>
+                
+                <div class="card threat-card">
+                    <i class="fas fa-bug"></i>
+                    <h3>Malware Attacks</h3>
+                    <p>Malicious software designed to infiltrate, damage, or gain unauthorized access to systems.</p>
+                    <ul>
+                        <li>Viruses and worms</li>
+                        <li>Trojans and spyware</li>
+                        <li>Keyloggers and rootkits</li>
+                        <li>Adware and cryptojacking</li>
+                    </ul>
+                </div>
+
+                <div class="card threat-card">
+                    <i class="fas fa-comments"></i>
+                    <h3>Social Engineering</h3>
+                    <p>Psychological manipulation to trick users into revealing sensitive information.</p>
+                    <ul>
+                        <li>Pretexting scenarios</li>
+                        <li>Baiting with fake rewards</li>
+                        <li>Quid pro quo offers</li>
+                        <li>Physical tailgating</li>
+                    </ul>
+                </div>
+
+                <div class="card threat-card">
+                    <i class="fas fa-bomb"></i>
+                    <h3>Zero-Day Exploits</h3>
+                    <p>Attacks targeting undisclosed vulnerabilities before patches are available.</p>
+                    <ul>
+                        <li>Unknown vulnerabilities</li>
+                        <li>High-impact attacks</li>
+                        <li>Advanced persistent threats</li>
+                        <li>Vulnerability broker markets</li>
+                    </ul>
+                </div>
+
+                <div class="card threat-card">
+                    <i class="fas fa-boxes"></i>
+                    <h3>Supply Chain Attacks</h3>
+                    <p>Compromising third-party vendors to infiltrate target organizations.</p>
+                    <ul>
+                        <li>Compromised software updates</li>
+                        <li>Third-party data breaches</li>
+                        <li>Infected hardware components</li>
+                        <li>Trusted vendor abuse</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About ShieldTech</h2>
+                <p>Empowering businesses to recognize and combat cyber threats effectively since 2025, ShieldTech leads the charge in spreading cybersecurity awareness.</p>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Protecting Your Digital Future</h3>
+                    <p style="padding-top: 20px; padding-bottom: 20px;">ShieldTech is an initiative dedicated to promoting cybersecurity awareness. Its main goal is to educate individuals and organizations about safeguarding systems, networks, and data against potential cyber threats. By spreading knowledge about best practices, security measures, and emerging risks, ShieldTech aims to empower users to navigate the digital world securely and confidently.</p>
+                    <a href="#contact" class="btn btn-primary">Contact Our Team</a>
+                </div>
+                
+                <div class="about-img">
+                    <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" 
+                         alt="ShieldTech cybersecurity team working" 
+                         loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Get In Touch</h2>
+                <p>We’re here to help! Whether you have a question, need support, or want to share feedback, feel free to reach out to us</p>
+            </div>
+            
+            <div class="contact-form">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    
+                    
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>ShieldTech</h3>
+                    <p>Providing cutting-edge cybersecurity solutions since 2025. Protecting your digital future today.</p>
+                    <div class="social-links">
+                        <a href="https://x.com/StaySafeOnline" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="http://www.linkedin.com/in/sai-siddartha-baindla-374a6b288" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://github.com/search?q=cyber%20security&type=repositories" aria-label="GitHub"><i class="fab fa-github"></i></a>
+			<a href="https://www.instagram.com/sidddddx__?igsh=MWk1YW9ma3VqMjM2OQ==" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Cyber Security</h3>
+                    <ul>
+                        <li><a href="#services">Network Security</a></li>
+                        <li><a href="#services">Data Encryption</a></li>
+                        <li><a href="#services">Penetration Testing</a></li>
+                        <li><a href="#services">Cloud Security</a></li>
+                        <li><a href="#services">Mobile Security</a></li>
+                        <li><a href="#services">Security Training</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Cyber Threats</h3>
+                    <ul>
+                        <li><a href="#threats">Phishing Attacks</a></li>
+                        <li><a href="#threats">Ransomware</a></li>
+                        <li><a href="#threats">DDoS Attacks</a></li>
+                        <li><a href="#threats">Insider Threats</a></li>
+                        <li><a href="#threats">Malware Attacks</a></li>
+			<li><a href="#threats">Social Engineering</a></li>
+			<li><a href="#threats">Zero-Day Exploits</a></li>
+			<li><a href="#threats">Supply Chain Attacks</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Avadi, Chennai</li>
+                        <li><i class="fas fa-phone"></i> +919381445512 </li>
+                        <li><i class="fas fa-envelope"></i> sidsiddartha5@gmail.com</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 ShieldTech Cybersecurity. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuBtn = document.querySelector('.mobile-menu-btn');
+            const navLinks = document.querySelector('.nav-links');
+            
+            menuBtn.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+            });
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Form submission
+            const contactForm = document.getElementById('contactForm');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    alert('Thank you for your message! We will get back to you soon.');
+                    this.reset();
+                });
+            }
+        });
+    </script>
+</body>
+</html>
